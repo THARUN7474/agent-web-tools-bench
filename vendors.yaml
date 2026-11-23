@@ -1,0 +1,37 @@
+# One block per vendor. cost_usd_per_task: from the vendor's public pricing page
+# at the date below; re-check before publishing results.
+pricing_checked: 2026-11-24
+vendors:
+  firecrawl:
+    env_key: FIRECRAWL_API_KEY
+    base_url: https://api.firecrawl.dev/v1
+    auth_header: "Authorization: Bearer {key}"
+    endpoints:
+      extract: {path: /scrape, method: POST}
+      search-answer: {path: /search, method: POST}
+      structured: {path: /scrape, method: POST, note: "json mode with schema"}
+    cost_usd_per_task: 0.008
+  tavily:
+    env_key: TAVILY_API_KEY
+    base_url: https://api.tavily.com
+    endpoints:
+      extract: {path: /extract, method: POST}
+      search-answer: {path: /search, method: POST}
+      structured: {path: /extract, method: POST}
+    cost_usd_per_task: 0.008
+  exa:
+    env_key: EXA_API_KEY
+    base_url: https://api.exa.ai
+    endpoints:
+      extract: {path: /contents, method: POST}
+      search-answer: {path: /search, method: POST}
+      structured: {path: /contents, method: POST}
+    cost_usd_per_task: 0.005
+  jina:
+    env_key: JINA_API_KEY
+    base_url: https://r.jina.ai
+    auth_header: "Authorization: Bearer {key}"
+    endpoints:
+      extract: {path: '/{url}', method: GET}
+      structured: {path: '/{url}', method: GET}
+    cost_usd_per_task: 0.002
