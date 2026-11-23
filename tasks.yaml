@@ -1,0 +1,40 @@
+# Fixed task suite. Version with the repo; changes here invalidate old comparisons.
+- id: extract-docs-page
+  category: extract
+  url: https://docs.python.org/3/library/asyncio.html
+  expect: Clean markdown/text of the asyncio library page, nav and boilerplate removed.
+- id: extract-wiki-article
+  category: extract
+  url: https://en.wikipedia.org/wiki/Retrieval-augmented_generation
+  expect: Article body text on retrieval-augmented generation, references optional.
+- id: extract-pricing-table
+  category: extract
+  url: https://www.postgresql.org/about/
+  expect: About-page content for PostgreSQL, headings preserved.
+- id: search-current-llm-price
+  category: search-answer
+  query: "current API price per 1M tokens for a frontier hosted LLM, with source"
+  expect: A price figure with a cited vendor pricing page.
+- id: search-ycombinator-batch
+  category: search-answer
+  query: "how many companies are in the latest Y Combinator batch, with source"
+  expect: A number with a cited ycombinator.com source.
+- id: search-india-unicorn
+  category: search-answer
+  query: "a startup that became a unicorn in India this year, with source"
+  expect: Company name and a cited news source.
+- id: structured-repo-card
+  category: structured
+  url: https://github.com/vllm-project/vllm
+  schema: {name: str, description: str, stars: int, language: str, license: str}
+  expect: Repo metadata matching the schema.
+- id: structured-job-card
+  category: structured
+  url: https://www.ycombinator.com/companies
+  schema: {companies: [{name: str, batch: str, one_liner: str}]}
+  expect: At least 5 companies matching the schema.
+- id: structured-product-card
+  category: structured
+  url: https://www.postgresql.org/docs/current/release.html
+  schema: {releases: [{version: str, date: str}]}
+  expect: Release versions and dates matching the schema.
